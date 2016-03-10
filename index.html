@@ -1,8 +1,22 @@
 <html>
-  <head>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <title>DevOps Finland</title>
-  </head>
-  <body>
+    <script>
+    $( document ).ready( function() {
+        $('#button').click( function() {
+            $.ajax({
+                type: "POST",
+                url: 'https://fbcwpedntk.execute-api.eu-west-1.amazonaws.com/dev/invite',
+                data: JSON.stringify( { email : $('#email').val() } ),
+                success: function( data ) { alert( data ); },
+                contentType: "application/json",
+                dataType: 'json'
+            });
+        } );
+    } );
+    </script>
+</head>
     <p>You can find our events at <a href="http://www.meetup.com/devops-finland/">meetup.com</a>.</p>
-  </body>
+    <p>Put your email here to get invited to slack! <input id="email" type="text" /> <button id="button">Let me in!</button>
 </html>
